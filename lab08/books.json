@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "Black Magic",
+      "price": "1000",
+      "author": [
+        "Kaecilius",
+        "Dormammu"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Light Magic",
+      "price": "1000",
+      "author": [
+        "Ancient One",
+        "Wong"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Basic Magic",
+      "price": "300",
+      "author": [
+        "Dr.Strange",
+        "Wong",
+        "Ancient One"
+      ]
+    }
+  ]
