@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Add image</title>
+</head>
+
+<body>
+    <div class="dog_header">
+        <center><h3>Upload Image</h3></center>
+    </div>
+    <div class="main"><br>
+    <input type="text" id="dog_name" placeholder="Image Name"><br>
+    </div>
+        <label for="fileUpload">FileUpload:</label>
+        <input type="file" id="fileUpload" name="fileUpload" >
+        <button onclick="addDog()">Upload</button><br>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        var id = urlParams.get('id');
+        var dogid = -1;
+        var dogs = [];
+        if(localStorage.getItem('dogs')) {
+            var dataArray = localStorage.getItem('dogs');
+            dogs = JSON.parse(dataArray);
+        }
+        if(id) {
+            for(var i = 0 ,j = dogs.length; i < j; i++) {
+                if(dogs[i].id == id) {
+                    dogid = i;
+                    document.getElementById("dog_name").value = dogs[i].name;
+                    break;
+                }
+            }
+        }
+        function addDog() {
+            var name = document.getElementById("dog_name").value;
+            var img = document.getElementById("fileUpload").value;
+
+            if(dogid == -1) {
+                dogid = findMaxDogId() + 1;
+                
+                var dog = {
+                    id: dogid,
+                    name: name,
+                    images: img
+                };
+
+                dogs.push(dog);
+            }
+            else {
+                dogs[dogid].name = name;
+            }
+            localStorage.setItem("dogs",JSON.stringify(dogs));
+
+            window.location.href = 'index.html';
+        }
+        function findMaxDogId() {
+            var max = 0;
+            for(var i = 0; i < dogs.length; i++) {
+                if(dogs[i].id > max) {
+                    max = dogs[i].id;
+                }
+            }
+            return max;
+        }
+        function previewImage() {
+            var fileInput = document.getElementById('fileUpload');
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+        
+            reader.onload = function(e) {
+                var image = document.createElement('img');
+                image.src = e.target.result;
+                document.body.appendChild(image);
+            };
+        
+            reader.readAsDataURL(file);
+        }
+        
+        var fileInput = document.getElementById('fileUpload');
+        fileInput.addEventListener('change', previewImage);
+    </script>
+</body>

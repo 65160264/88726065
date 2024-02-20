@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Show dog picture</title>
+</head>
+
+<body>
+    <div class="dog_header">
+        <center>
+            <h3>My Dog</h3>
+        </center>
+    </div>
+    <div class="main">
+        <hr>Find Picture : <input type="text" id="search" onkeyup="searchDog()">
+        <button onclick="document.location='uploaddog.html'">ADD</button>
+        <hr>Resurt<br>
+    </div>
+    <div>
+        <table class="pure-table pure-table-bordered" id="dog-list">
+        </table>
+    </div>
+    
+
+    <script>
+        const url = `https://127.0.0.1:5500/v1/images/search?limit=20`;
+        const api_key = "live_BycXAE6IlMxref8WGhf7hhyiEjsMBUwOg8e8nV5IKq4dB79qABCmqRcFc5fq1kHN"
+        
+        
+
+
+        var dogs = [];
+        if(localStorage.getItem('dogs')) {
+            var dataArray = localStorage.getItem('dogs');
+            dogs = JSON.parse(dataArray);
+        } else {
+            localStorage.setItem("dogs", JSON.stringify(dogs));
+        }
+
+        function searchDog() {
+            var search = document.getElementById("search").value;
+            var result = document.getElementById("dog-list");
+    
+            var html = "\
+                <tr>\
+                <th width='30%'></th>\
+                <th width='10%'></th>\
+                <th width='10%'></th>\
+                ";
+
+            for (var i = 0; i < dogs.length; i++) {
+                var str = dogs[i].id + dogs[i].name + dogs[i].images;
+        
+                if (str.toLowerCase().includes(search.toLowerCase())) {
+                    var imageUrl = dogs[i].images;
+                    console.log("Image URL from localStorage:", imageUrl);
+
+                    html += `
+                    <tr>
+                        <td><img src="${dogs[i].imageUrl}"></td>
+                        <td>${dogs[i].name}</td>
+                        <td class='nnn'>
+                            <img src='https://t.ly/mtMN' onclick='editDog(${dogs[i].id})'>
+                            <img src='https://t.ly/523J' onclick='deleteDog(${dogs[i].id})'>
+                        </td>
+                    </tr>`;
+                }
+            }
+
+            result.innerHTML = html;
+        }
+        
+        function deleteDog(id) {
+            for(var i = 0; i < dogs.length; i++) {
+                if(dogs[i].id == id) {
+                    dogs.splice(i,1);
+                }
+            }
+            localStorage.setItem("dogs", JSON.stringify(dogs));
+            searchDog();
+        }
+
+        function editDog(id) {
+            window.location.href = 'uploaddog.html' + '?id=' + encodeURIComponent(id);
+        }
+        
+        var dog = JSON.parse(localStorage.getItem("dogs"));
+        
+        if(dogs == null) {
+            dogs = [];
+        }
+        
+        searchDog();
+    </script>
+</body>
+</html>
