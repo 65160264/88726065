@@ -20,39 +20,6 @@ body {
     text-shadow: 0 0 20px #5cffef, 0 0 40px #98eca6;
 }
 
-table {
-    margin-left: 20px;
-}
-
-table,
-th,
-td,
-tr {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 10px;
-    background-color: rgb(255, 255, 255);
-}
-
-th {
-    background-color: rgb(76, 255, 186);
-    color: rgb(0, 0, 0);
-}
-
-.main input {
-    font-size: 15px;
-    padding: 5px;
-    margin-top: 5px;
-}
-
-.nnn{
-    padding-right: -30px;
-}
-
-.form-element {
-    box-shadow: 20px 7px 5px #7effae;
-}
-
 button {
     position: relative;
     padding: 10px 20px;
