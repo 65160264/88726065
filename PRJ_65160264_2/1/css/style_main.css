@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('https://campus.campus-star.com/app/uploads/2015/10/BUU-11.jpg');
+    /* รูปภาพพื้นหลังเริ่มต้น */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 1s ease;
+    /* ใช้ transition เพื่อทำให้เกิดการเปลี่ยนแปลงสามารถเห็นได้ */
+}
+
+@keyframes changeBackground {
+    0% {
+        background-image: url('https://campus.campus-star.com/app/uploads/2015/10/BUU-11.jpg');
+    }
+    25% {
+        background-image: url('https://wp-assets.dotproperty-kh.com/wp-content/uploads/sites/9/2016/11/08162826/DSC_0854.jpg');
+    }
+    50% {
+        background-image: url('https://www.ktc.co.th/pub/media/Travel-Story/Thailand/bangsaen/bangsaen-beach.webp');
+    }
+    100% {
+        background-image: url('https://campus.campus-star.com/app/uploads/2015/10/BUU-11.jpg');
+    }
+}
+
+.change-on-load {
+    animation: changeBackground 10s infinite;
+}
+
+header {
+    background-color: #43766C;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+header h1 {
+    background: linear-gradient(90deg, #F8FAE5, #B19470);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 40px #F8FAE5,
+        0px 0px 70px #B19470;
+}
+
+main h2 {
+    background: linear-gradient(90deg, #F8FAE5, #f9cf00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 40px #f5efd1,
+        0px 0px 50px #f5efd1,
+        0px 0px 60px #f5efd1;
+}
+
+main p {
+    background: linear-gradient(90deg, #F8FAE5, #f9cf00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 40px #f5efd1,
+        0px 0px 50px #f5efd1,
+        0px 0px 60px #f5efd1;
+}
+
+nav {
+    background-color: #F8FAE5;
+    padding: 10px;
+    text-align: left;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #76453B;
+    color: #fff;
+}
+
+/* Slideshow Container */
+#slideshow-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Slideshow Images */
+#slideshow-container img {
+    width: 100%;
+    height: min-content;
+    border-radius: 10px;
+}
+
+/* Slideshow Text */
+#slideshow-container .text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.300);
+    color: #F8FAE5;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+/* Slideshow Navigation Buttons */
+#prev,
+#next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #B19470;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    z-index: 1000;
+}
+
+#prev {
+    left: 0;
+}
+
+#next {
+    right: 0;
+}

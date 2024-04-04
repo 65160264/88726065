@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถานที่ท่องเที่ยว</title>
+    <link rel="stylesheet" href="css/style_search.css">
+</head>
+
+<body>
+    <header>
+        <h1>สถานที่ท่องเที่ยว ในปรเทศไทย</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <div class="manu">
+            <h2>หน้าเว็บนี้จะยกตัวอย่างสถานที่ท่องเที่ยวทางธรรมชาติหรือศาสนาและวัฒนธรรมน่าที่น่าสนใจจากภูมิภาค</h2><hr>
+            ค้นหาสถานที่ท่องเที่ยว : <small>ลอง "บางแสน" หรือ "ภาคตะวันออก"</small>
+            <div>
+                <img class="clearbtn" src="images/remove.png" alt="Clear Search" id="clearButton">
+            </div>
+            <div class="container-input">
+                <input type="text" id="search" class="input" onkeyup="search()" placeholder="Search"> 
+            </div> 
+        </div>
+    </div>
+    <div id="details"></div>
+    <script src="js/datatravel.js"></script>
+    <script src="js/script_search.js"></script>
+</body>
+
+</html>
